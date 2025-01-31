@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{% block title %}今日のコーデ☆{% endblock %}
-{% block subtitle %}"コーデ"{% endblock %}
+{% block title %}カテゴリ:今日のコーデ{% endblock %}
+{% block subtitle %}"コーデ"の情報ゆる～くお届け{% endblock %}
 {% block content %}
 <header class="masthead"
 style="background-image: url({% static 'assets/img/store.jpg' %})"></header>
@@ -16,7 +16,7 @@ style="background-image: url({% static 'assets/img/store.jpg' %})"></header>
         <div class="posted_at"></div>
         <div class="time">{{record.posted_at}}に投稿</div>
         <div class="category">カテゴリ:{{record.category}}</div>
-        <div class="content">{{record.content|truncatechars:50}}</div>
+        <div class="content">{{record.content|truncatechars:50|safe}}</div>
         <hr>
     {% endfor %}
 

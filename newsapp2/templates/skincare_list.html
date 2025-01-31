@@ -14,7 +14,7 @@ style="background-image: url({% static 'assets/img/018.jpeg' %})"></header>
         <div class="posted_at"></div>
         <div class="time">{{record.posted_at}}に投稿</div>
         <div class="category">カテゴリ:{{record.category}}</div>
-        <div class="content">{{record.content|truncatechars:50}}</div>
+        <div class="content">{{record.content|truncatechars:50|safe}}</div>
         <hr>
     {% empty %}
         <p>まだ投稿がありません。</p>

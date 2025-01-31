@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Blog Home - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'newsapp2:index' %}">にゅーすサイト</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <!--ログイン中のナビゲーションメニュー-->
+                        {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'newsapp2:index' %}">ホーム</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}">ログアウト</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">サインアップ</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'newsapp2:contact' %}">お問い合わせ</a></li>
+                        {% else %}
+                        <!--ログイン状態ではない場合のメニュー-->
+                        <li class="nav-item"><a class="nav-link" href="{% url 'newsapp2:index' %}">ホーム</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">ログイン</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">サインアップ</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'newsapp2:contact' %}">お問い合わせ</a></li>
+                        {% endif %}
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page header with logo and tagline-->
+        <header class="py-5 bg-light border-bottom mb-4">
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="fw-bolder">{% block title %}{% endblock %}</h1>
+                    <p class="lead mb-0">{% block subtitle %}{% endblock %}</p>
+                </div>
+            </div>
+        </header>
+                    {% block content %}{% endblock %}
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Search widget-->
+                        <!-- 変更部分 -->
+<div class="search-header">さーち</div>
+<div class="card-body">
+    <div class="input-group">
+        <form method="get" action="{% url 'newsapp2:search_results' %}"  style="display: flex; width: 100%; align-items: center;">
+            <input class="form-control search-input" type="text" name="query" placeholder="検索ワードを入力..." aria-label="Enter search term..." />
+            <button class="btn btn-search" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" class="h-6 w-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5a7 7 0 1 1-7 7 7 7 0 0 1 7-7zM21 21l-4.35-4.35"></path>
+                </svg>
+            </button>
+        </form>
+    </div>
+</div>
+
+                    <!-- Categories widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">かてごりー</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="{% url 'newsapp2:skincare_list' %}">スキンケア・コスメ</a></li>
+                                        <li><a href="{% url 'newsapp2:horror_list' %}">怖い話</a></li>
+                                        <li><a href="{% url 'newsapp2:sweets_list' %}">人気のスイーツ</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="{% url 'newsapp2:lifehack_list' %}">ライフハック</a></li>
+                                        <li><a href="{% url 'newsapp2:coordination_list' %}">今日のコーデ</a></li>
+                                        <li><a href="{% url 'newsapp2:zoo_list' %}">可愛い動物</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Side Widget</div>
+                        <div class="card-body">にゅーすサイトなので、新しく記事を投稿することはできません😿
+                            ログインするとコメントができるようになります！</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; News Site 2025</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

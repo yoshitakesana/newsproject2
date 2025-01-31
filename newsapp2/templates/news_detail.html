@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{{object.title}}{% endblock %}
+{% block subtitle %}カテゴリー:{{object.category}}{% endblock %}
+
+<div class="content2">
+    {% block content %}
+    <p>{{ post.content|safe }}</p>
+    <div class="posted_at">
+        この記事は{{ post.posted_at|date:"Y-m-d H:i" }}に投稿されました。
+    </div>
+    <hr>
+
+    <div class="comment-section">
+        <h4 class="comment-header">コメント欄</h4>
+        {% for comment in comments %}
+        <div class="comment-item">
+            <div class="comment-username">{{ comment.user.username }}</div>
+            <div class="comment-timestamp">{{ comment.created_at|date:"Y-m-d H:i" }}</div>
+            <div class="comment-content">{{ comment.content }}</div>
+        </div>
+        {% empty %}
+        <p>この記事にコメントはありません😿</p>
+        {% endfor %}
+    </div>
+
+    {% if user.is_authenticated %}
+    <form method="post" class="comment-form">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">コメントを投稿</button>
+    </form>
+    {% else %}
+    <div class="login-link">
+        <p>コメントを投稿するには<a href="{% url 'accounts:login' %}">ログイン</a>してください。</p>
+    </div>
+    {% endif %}
+    {% endblock %}
+</div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}カテゴリ:スキンケア・コスメ{% endblock %}
+{% block subtitle %}"スキンケア・コスメの情報、ゆる～くお届け"{% endblock %}
+{% block content %}
+<header class="masthead"
+style="background-image: url({% static 'assets/img/018.jpeg' %})"></header>
+    {% for record in skincare_records %}
+    <a href="{% url 'newsapp2:news_detail' record.pk %}">
+        <div class="title">
+            <h3><a href="{% url 'newsapp2:news_detail' record.pk %}">{{record.title}}</a></h3>
+        </div>
+        <div class="posted_at"></div>
+        <div class="time">{{record.posted_at}}に投稿</div>
+        <div class="category">カテゴリ:{{record.category}}</div>
+        <div class="content">{{record.content|truncatechars:50}}</div>
+        <hr>
+    {% empty %}
+        <p>まだ投稿がありません。</p>
+    {% endfor %}
+
+
+
+{% include 'pagination.html' %}
+
+{% endblock %}

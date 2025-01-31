@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログイン</title>
+    <style>
+        /* 背景色とフォント */
+        body {
+            background-color: #f8f9fa; /* 明るいグレーの背景 */
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        /* ヘッダーのスタイル */
+        header {
+            background-color: #a3c9e2; /* 水色の背景 */
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        header h2 {
+            font-size: 2rem;
+            color: #ffffff; /* 白い文字 */
+        }
+
+        /* フォームのレイアウト */
+        .form-signin {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            margin: auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-signin input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #a3c9e2; /* 水色の枠 */
+        }
+
+        .form-signin .enter_username, .form-signin .enter_password {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-signin input[type="text"],
+        .form-signin input[type="password"] {
+            font-size: 16px;
+        }
+
+        /* ユーザー名とパスワードのラベル */
+        .form-signin label {
+            font-size: 14px;
+            color: #a3c9e2; /* 水色 */
+            margin-bottom: 5px;
+        }
+
+        /* ログインボタン */
+        .form-signin input[type="submit"] {
+            background-color: #a3c9e2; /* 水色のボタン */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-signin input[type="submit"]:hover {
+            background-color: #8db5d5; /* ホバー時の水色 */
+            transform: scale(1.05);
+        }
+
+        .form-signin input[type="submit"]:active {
+            background-color: #007bff; /* ボタン押下時の色 */
+            transform: scale(1);
+        }
+
+        /* エラーメッセージ */
+        .form-signin p {
+            color: red;
+            font-size: 14px;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>ログインページ</h2>
+    </header>
+    
+    <main class="form-signin">
+        {% if form.errors %}
+        <p>ユーザー名とパスワードが一致しません。</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="enter_username">
+                <label for="Username">ユーザーネーム</label>
+                <input type="text" name="username" id="id_username" maxlength="150" autocapitalize="none" autocomplete="username" class="form-control" placeholder="ユーザー名" required autofocus>
+            </div>
+
+            <div class="enter_password">
+                <label for="Password">パスワード</label>
+                <input type="password" name="password" id="id_password" autocomplete="current-password" class="form-control" placeholder="パスワード" required autofocus>
+            </div>
+
+            <input class="w-100 btn btn-lg btn-primary" type="submit" value="ログイン">
+            <br><br>
+            <input type="hidden" name="next" value="{% url 'newsapp2:index' %}">
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

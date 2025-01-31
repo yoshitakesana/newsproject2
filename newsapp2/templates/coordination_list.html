@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}今日のコーデ☆{% endblock %}
+{% block subtitle %}"コーデ"{% endblock %}
+{% block content %}
+<header class="masthead"
+style="background-image: url({% static 'assets/img/store.jpg' %})"></header>
+    {% for record in coordination_records %}
+    <a href="{% url 'newsapp2:news_detail' record.pk %}">
+        <div class="title">
+            <h3><a href="{% url 'newsapp2:news_detail' record.pk %}">{{record.title}}</a></h3>
+        </div>
+        <div class="user">{{record.user.username}}</div>
+        <br>
+        <div class="posted_at"></div>
+        <div class="time">{{record.posted_at}}に投稿</div>
+        <div class="category">カテゴリ:{{record.category}}</div>
+        <div class="content">{{record.content|truncatechars:50}}</div>
+        <hr>
+    {% endfor %}
+
+
+
+{% include 'pagination.html' %}
+
+{% endblock %}

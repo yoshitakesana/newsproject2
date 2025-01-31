@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ログアウト</title>
+    <style>
+        /* 背景色とフォント */
+        body {
+            background-color: #f7f1f3; /* 優しいピンクの背景 */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        /* ログアウトメッセージ */
+        h3 {
+            font-size: 2rem;
+            color: #a3c9e2; /* お気に入りの水色 */
+            margin-bottom: 20px;
+        }
+
+        /* リンクのスタイル */
+        a {
+            color: #a3c9e2; /* お気に入りの水色 */
+            font-size: 1.2rem;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 2px solid #a3c9e2; /* 水色の枠線 */
+            background-color: white;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a:hover {
+            background-color: #a3c9e2; /* 水色の背景 */
+            color: white; /* 文字色を白に変更 */
+        }
+    </style>
+</head>
+<body>
+    <h3>ログアウトしました</h3>
+    <p><a href="{% url 'newsapp2:index' %}">トップページへ</a></p>
+</body>
+</html>

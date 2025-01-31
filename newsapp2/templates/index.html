@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}にゅーすサイトへようこそ！{% endblock %}
+{% block subtitle %}"ちょっと気になる話題、ゆる～くお届け"{% endblock %}
+{% block content %}
+<!-- ここに画像を追加します -->
+
+<header class="masthead"
+style="background-image: url({% static 'assets/img/news.jpg' %})"></header>
+    {% for record in orderby_records %}
+    <a href="{% url 'newsapp2:news_detail' record.pk %}">
+        <div class="title">
+            <h3><a href="{% url 'newsapp2:news_detail' record.pk %}">{{record.title}}</a></h3>
+        </div>
+        <div class="posted_at"></div>
+        <div class="time">{{record.posted_at}}に投稿</div>
+        <div class="category">カテゴリ:{{record.category}}</div>
+        <div class="content">{{record.content|truncatechars:50|safe}}</div>
+        <hr>
+    {% endfor %}
+
+
+
+{% include 'pagination.html' %}
+
+{% endblock %}

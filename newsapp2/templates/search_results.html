@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}検索結果{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>検索結果!</h1>
+    <p>検索ワード: "{{ form.query.value }}"</p>
+    <hr>
+    {% if results %}
+        <ul>
+        {% for post in results %}
+            <li>
+                <a href="{% url 'newsapp2:news_detail' post.pk %}">{{ post.title }}</a>
+                <p>{{ post.content|truncatechars:100|safe }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>該当する記事は見つかりませんでした。</p>
+    {% endif %}
+</div>
+{% endblock %}

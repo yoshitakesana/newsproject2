@@ -101,6 +101,71 @@
         .form-signup a:hover {
             text-decoration: underline;
         }
+        /* For tablets (portrait and landscape) and larger devices */
+@media (min-width: 768px) {
+    .form-signup {
+        max-width: 500px;
+    }
+
+    header h2 {
+        margin-left: 0; /* Margin adjustment for larger screens */
+    }
+}
+
+/* For smartphones (portrait and landscape) */
+@media (max-width: 767px) {
+    body {
+        height: auto;
+        padding: 20px;
+    }
+
+    header h2 {
+        font-size: 1.5rem;
+        margin-left: 0; /* Centering the header text */
+    }
+
+    .form-signup {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .form-signup input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .form-signup input[type="submit"] {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+}
+
+/* For very small screens (landscape) */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    header h2 {
+        font-size: 1.2rem;
+        padding: 5px 10px;
+    }
+
+    .form-signup {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .form-signup input {
+        font-size: 12px;
+    }
+
+    .form-signup input[type="submit"] {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
     </style>
 </head>
 

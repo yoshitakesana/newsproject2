@@ -104,6 +104,70 @@
         color: red;
         border: 1px solid #f5c6cb;
     }
+
+    /* For tablets (portrait and landscape) and larger devices */
+@media (min-width: 768px) {
+    .contact-form {
+        max-width: 600px;
+    }
+}
+
+/* For smartphones (portrait and landscape) */
+@media (max-width: 767px) {
+    .contact-form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .contact-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact-form p {
+        font-size: 14px;
+    }
+
+    .form-group label {
+        font-size: 12px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+}
+
+/* For very small screens (landscape) */
+@media (max-width: 480px) {
+    .contact-form {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .contact-form h1 {
+        font-size: 1.2rem;
+    }
+
+    .contact-form p {
+        font-size: 12px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 8px;
+    }
+
+    .btn-primary {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
 </style>
 
 <div class="contact-form">
